@@ -82,25 +82,4 @@ class Dados():
     self.idade = idade
       
 
-
-    
-    
-
-
 dd = Dados()
-
-
-
-
-
-
-
-#  def verificaIdade(self):
-
-
-#Coisas que faltam: 
-# 1. acabar o codigo (Portar o código da Mari p/ objeto)
-# 2. fazer o slide
-# 3. fazer o fluxograma
-# 4. fazer o readme.md para o github
-# 5. dividir falas e partes
