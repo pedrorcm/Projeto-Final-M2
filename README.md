@@ -19,7 +19,7 @@ Fique à vontade para testar como funciona nossa pesquisa sobre a Covid19. Adora
 Para isso, o primeiro passo é clonar o repositório para seu local (computador), usando o seguinte comando no Git:
 
 ```shell
-
+https://github.com/pedrorcm/Projeto-Final-M2.git
 ```
 
 Em caso de dúvidas, verifique a documentação:
