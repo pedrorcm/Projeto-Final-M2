@@ -2,84 +2,110 @@ from datetime import datetime
 import csv
 
 
-class Dados():
-  listaDeRespostas = []
-
-
+class Tabela():
+  
   def __init__(self):
-    self.loop = self.enquanto()
+    self.file = 'pesquisacovid.csv'
+    self.listaDeRespostas = []
 
+  #Abrindo o arquivo CSV e escrevendo através de um loop
+  def loop(self):
 
-  def enquanto(self):
-    with open ('pesquisacovid19.csv', 'w', newline = '') as csvfile:
+    with open (self.file, 'w', newline = '') as csvfile:
 
       while len(self.listaDeRespostas) < 10:
-        self.setIdade()
-        self.setGenero()
-        self.setRespostas()
-        self.setHora()
+        dd = Dados()
+        dd.genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
+        dd.respostas = None
 
-        respostaParaEscrever = [self.idade, self.genero,
-        self.primeira_resposta, self.segunda_resposta,
-        self.terceira_resposta, self.quarta_resposta,
-        self.datahora]
-
-        self.listaDeRespostas.append(respostaParaEscrever)
+        self.listaDeRespostas.append(dd.respostaCompleta)
 
         escrevendo = csv.writer(csvfile, delimiter = ',')
-        escrevendo.writerow(respostaParaEscrever)
-      
+        escrevendo.writerow(dd.respostaCompleta)
+
     csvfile.close()
 
 
-  def setHora(self):
-    self.datahora = datetime.today().strftime('%y-%m-%d %H:%M')
+class Dados():
+
+  def __init__(self):
+    self.idade = int(input('Digite a Idade do participante: '))
+    self._datahora = datetime.today().strftime('%y-%m-%d %H:%M')
 
 
-  def setRespostas(self):
-    primeira_resposta = int(input('Você já contraiu Covid-19?: '))
-    self.primeira_resposta = self.verificaRespostas(primeira_resposta)
-
-    segunda_resposta = int(input('Caso tenha contraído Covid-19, apresentou alguma sequela? '))
-    self.segunda_resposta = self.verificaRespostas(segunda_resposta)
-
-    terceira_resposta = int(input('Você tomou a vacina? '))
-    self.terceira_resposta = self.verificaRespostas(terceira_resposta)
-
-    quarta_resposta = int(input('Se tiver se vacinado, completou o esquema vacinal?'))
-    self.quarta_resposta = self.verificaRespostas(quarta_resposta)
-    
+  #Retorna todas as respostas do objeto, para serem escritas no csv
+  @property
+  def respostaCompleta(self):
+    return [self._idade, self._genero,
+        self._primeira_resposta, self._segunda_resposta,
+        self._terceira_resposta, self._quarta_resposta,
+        self._datahora, self.respostas]
   
-  def verificaRespostas(self, respostaQQ):
-    while (respostaQQ < 1) or (respostaQQ > 3):
-      print('Digite uma resposta válida, entre 1 e 3')
-      respostaQQ = int(input('>> '))
 
-    return respostaQQ
+  #Getter e Setter da Idade
 
+  @property
+  def idade(self):
+    return self._idade
 
-  def setGenero(self):
-    gen = ['M','F','NB']
-    genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
-
-    while genero not in gen:
-      genero = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): ').upper()
-
-    self.genero = genero
-
-
-  def setIdade(self):
-    idade = int(input('Insira a idade do entrevistado: '))
-
-    while (idade < 9) or (idade > 130):
-      if idade == 00:
+  @idade.setter
+  def idade(self, idd):
+   
+    while (idd < 9) or (idd > 130):
+      if idd == 00:
        print('Idade 00 digitada. Agradecemos pela participação. Pesquisa finalizada.')
        exit()
 
       print('Idade inválida para a pesquisa. Verifique o número digitado e a idade do participante. ')
-      idade = int(input('Insira a idade do entrevistado: '))
+      idd = int(input('Insira a idade do entrevistado: '))
 
-    self.idade = idade
-      
+    self._idade = idd
+  
 
-dd = Dados()
+  #Getter e setter das Respostas
+
+  @property
+  def respostas(self):
+    return self._primeira_resposta, self._segunda_resposta, self._terceira_resposta, self._quarta_resposta
+
+  @respostas.setter
+  def respostas(self, ignorar):
+    primeira_resposta = int(input('Você já contraiu Covid-19?: '))
+    self._primeira_resposta = self.verificaRespostas(primeira_resposta)
+
+    segunda_resposta = int(input('Caso tenha contraído Covid-19, apresentou alguma sequela? '))
+    self._segunda_resposta = self.verificaRespostas(segunda_resposta)
+
+    terceira_resposta = int(input('Você tomou a vacina? '))
+    self._terceira_resposta = self.verificaRespostas(terceira_resposta)
+
+    quarta_resposta = int(input('Se tiver se vacinado, completou o esquema vacinal?'))
+    self._quarta_resposta = self.verificaRespostas(quarta_resposta)
+
+  #Verifica se as respostas inseridas estão no intervalo entre 1 e 3.
+
+  def verificaRespostas(self, respostaQuestao):
+    while (respostaQuestao < 1) or (respostaQuestao > 3):
+      print('Digite uma resposta válida, entre 1 e 3')
+      respostaQuestao = int(input('>> '))
+
+    return respostaQuestao
+
+  #Getter e setter do gênero. A verificação ocorre dentro do setter.
+
+  @property
+  def genero(self):
+    return self._genero
+
+  @genero.setter
+  def genero(self, genero):
+    gen = ['M','F','NB']
+
+    while genero not in gen:
+      genero = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): ').upper()
+
+    self._genero = genero
+
+
+escrever = Tabela()
+escrever.loop()
