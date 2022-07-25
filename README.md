@@ -25,9 +25,8 @@ O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos d
   
   
 <p align="left"> 
-  No projeto atuou como<strong> Gestora de conhecimento,</strong>.<br>
-  Responsável por registrar e garantir a documentação de todo o processo.
-</p>
+  No projeto atuou como<strong> Co-facilitador(a)</strong>.<br>
+  Responsável por facilitar as reuniões e direcionar o tempo para cada sprint.</p>
 <p align="left">
   💌 Aqui vai uma mensagem para entrar em contato com você: ⤵️
 </p>
@@ -41,7 +40,7 @@ O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos d
   
 
 ### Mariana Lobão
-<img src="https://user-images.githubusercontent.com/40433498/174672152-baff9ec5-412e-4c5b-b602-8719386de5e9.jpg" width="100" height="100" />
+<img src="https://user-images.githubusercontent.com/40433498/180755691-21f1171d-cf0f-43ba-936c-80498612aee1.png" width="100" height="100" />
 <p align="left">
   
   
@@ -56,10 +55,9 @@ O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos d
   
  <p align="left">
   <a href="#" alt="Linkedin">
-  <a href="https://www.linkedin.com/in/mariana-lob%C3%A3o-1544830/" target="_blank"> <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white"/> 
+  <a href="https://www.linkedin.com/in/mariana-lobão-1544830/" target="_blank"> <img src="https://img.shields.io/badge/-Linkedin-0e76a8?style=flat-square&logo=Linkedin&logoColor=white"/> 
 
   <a href="#" alt="Github">
-  
      <a href="https://github.com/MarianaLobao/MarianaLobao" target="_blank"> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"width="60" height="20"/>
 </p>  
   
@@ -67,7 +65,7 @@ O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos d
 
 
 ### Pedro Rocha Campos 
-<img src="https://user-images.githubusercontent.com/40433498/174672153-fbed1314-a8a3-48a7-8212-4422489e3db9.jpg" width="100" height="100" />
+<img src="https://user-images.githubusercontent.com/40433498/180755032-e6a821eb-31ba-4a35-8f3d-af3acfedf06e.png" width="100" height="100" />
 <p align="left">
   
   
