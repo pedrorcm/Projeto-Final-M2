@@ -4,6 +4,9 @@
 <marquee>
 <img src="https://www.resilia.com.br/wp-content/uploads/2021/08/logo.png" width="1000" height="300" />
 
+###SOBRE O PROJETO
+Desenvolvimento de uma pesquisa digital fictícia realizada com a população de diversas cidades do Brasil com o armazenamento dos dados coletados em um arquivo csv para possíveis análises futuras. O tema da pesquisa é Covid19, onde realizamos perguntas acerca do contágio e da vacinação. Ao iniciarmos o programa é solicitado a idade e gênero do participante da pesquisa. Posteriormente, são feitas as quatro perguntas da pesquisa. A solicitação dos danos iniciais e das perguntas são realizadas através de um laço de repetição, onde ocorrem verificações dentro desse laço em conjunto com condicionais para efetuar essas verificações.. A primeira verificação consiste em torno da idade mínima do participante para poder participar da pesquisa. A outra verificação é para finalização do programa e da estrutura de laço de repetição, que finalizam quando a idade 00 é digitada. Sendo assim, enquanto a idade 00 não for digitada, o programa continua solicitando os dados iniciais e respostas dos participantes da pesquisa, que estão sendo armazenados paralelamente no arquivo csv.
+
 ### OBJETIVO
 O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos dados para análises sobre a Covid - 19.
 
