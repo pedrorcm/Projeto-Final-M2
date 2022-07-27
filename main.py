@@ -1,111 +1,120 @@
-from datetime import datetime
 import csv
+from datetime import datetime
 
 
 class Tabela():
-  
+
   def __init__(self):
-    self.file = 'pesquisacovid.csv'
-    self.listaDeRespostas = []
+    self.file = 'pesquisa_covid.csv'
+    self.lista_respostas = []
 
-  #Abrindo o arquivo CSV e escrevendo através de um loop
-  def loop(self):
 
-    with open (self.file, 'w', newline = '') as csvfile:
+  def escrevendo_linhas(self):
+    """Abrindo o arquivo CSV e escrevendo através de um loop"""
 
-      while len(self.listaDeRespostas) < 10:
-        dd = Dados()
-        dd.genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
-        dd.respostas = None
+    with open(self.file, 'w', newline='') as csvfile:
 
-        self.listaDeRespostas.append(dd.respostaCompleta)
+        while len(self.lista_respostas) < 10:
+          
+          dd = Dados()
+          dd.setAll()
 
-        escrevendo = csv.writer(csvfile, delimiter = ',')
-        escrevendo.writerow(dd.respostaCompleta)
+          self.lista_respostas.append(dd.todas_respostas_do_participante())
+
+          escrevendo = csv.writer(csvfile, delimiter=',')
+          escrevendo.writerow(dd.todas_respostas_do_participante())
 
     csvfile.close()
 
 
+
 class Dados():
+
+  PERGUNTAS = ['Você já contraiu Covid-19?: ', 'Caso tenha contraído Covid-19, apresentou alguma sequela? ',
+              'Você tomou a vacina? ', 'Se tiver se vacinado, completou o esquema vacinal? ']
+  OPCOES = "\n1 - SIM\n2 - NÃO\n3 - NÃO SEI\n"
+  RESPOSTASPOSSIVEIS = ["1", "2", "3"]
+  GENEROS = ['M', 'F', 'NB']
+
 
   def __init__(self):
     self.idade = int(input('Digite a Idade do participante: '))
-    self._datahora = datetime.today().strftime('%y-%m-%d %H:%M')
 
 
-  #Retorna todas as respostas do objeto, para serem escritas no csv
-  @property
-  def respostaCompleta(self):
-    return [self._idade, self._genero,
-        self._primeira_resposta, self._segunda_resposta,
-        self._terceira_resposta, self._quarta_resposta,
-        self._datahora, self.respostas]
-  
-
-  #Getter e Setter da Idade
 
   @property
   def idade(self):
     return self._idade
 
   @idade.setter
-  def idade(self, idd):
-   
-    while (idd < 9) or (idd > 130):
-      if idd == 00:
-       print('Idade 00 digitada. Agradecemos pela participação. Pesquisa finalizada.')
-       exit()
+  def idade(self, value):
+      '''Verifica e atribui valor à idade.'''
+      while (value < 14) or (value > 130):
+          if value == 00:
+            print(
+                'Idade 00 digitada. Agradecemos pela participação. Pesquisa finalizada.')
+            exit()
 
-      print('Idade inválida para a pesquisa. Verifique o número digitado e a idade do participante. ')
-      idd = int(input('Insira a idade do entrevistado: '))
+          print('Idade inválida para a pesquisa. Verifique o número digitado e a idade do participante. ')
+          value = int(input('Insira a idade do entrevistado: '))
 
-    self._idade = idd
-  
+      self._idade = value
 
-  #Getter e setter das Respostas
+
+
+  @property
+  def _genero(self):
+    return self.genero
+
+  @_genero.setter
+  def _genero(self, gen):
+    '''Verifica e seta o gênero do participante'''
+    while gen not in self.GENEROS:
+      gen = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): \n>> ').upper()
+
+      self._genero = gen
+
+
 
   @property
   def respostas(self):
-    return self._primeira_resposta, self._segunda_resposta, self._terceira_resposta, self._quarta_resposta
+    return self._respostas
 
   @respostas.setter
-  def respostas(self, ignorar):
-    primeira_resposta = int(input('Você já contraiu Covid-19?: '))
-    self._primeira_resposta = self.verificaRespostas(primeira_resposta)
+  def respostas(self, ignorar): #Ignorar existe aqui para poder realizar a atribuição de respostas no método setAll e ele identificar a operação como um setter.
+    '''Faz as perguntas ao usuário, verifica a entrada para cada pergunta, e retorna uma lista com suas respostas.'''
 
-    segunda_resposta = int(input('Caso tenha contraído Covid-19, apresentou alguma sequela? '))
-    self._segunda_resposta = self.verificaRespostas(segunda_resposta)
+    respostas_individuo = []
 
-    terceira_resposta = int(input('Você tomou a vacina? '))
-    self._terceira_resposta = self.verificaRespostas(terceira_resposta)
+    for i in range(len(self.PERGUNTAS)):
+      resposta_temporaria = input(self.PERGUNTAS[i] + self.OPCOES)
 
-    quarta_resposta = int(input('Se tiver se vacinado, completou o esquema vacinal?'))
-    self._quarta_resposta = self.verificaRespostas(quarta_resposta)
+      while resposta_temporaria not in self.RESPOSTASPOSSIVEIS:
+        print("\nResposta inválida\n")
+        resposta_temporaria = input(self.PERGUNTAS[i] + self.OPCOES)
 
-  #Verifica se as respostas inseridas estão no intervalo entre 1 e 3.
-
-  def verificaRespostas(self, respostaQuestao):
-    while (respostaQuestao < 1) or (respostaQuestao > 3):
-      print('Digite uma resposta válida, entre 1 e 3')
-      respostaQuestao = int(input('>> '))
-
-    return respostaQuestao
-
-  #Getter e setter do gênero. A verificação ocorre dentro do setter.
-
-  @property
-  def genero(self):
-    return self._genero
-
-  @genero.setter
-  def genero(self, genero):
-    gen = ['M','F','NB']
-
-    while genero not in gen:
-      genero = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): ').upper()
-
-    self._genero = genero
+      respostas_individuo.append(resposta_temporaria)
+    
+    self._respostas = ','.join(respostas_individuo)
 
 
-escrever = Tabela()
-escrever.loop()
+
+  def setAll(self):
+    '''Seta todos os elementos de UMA pessoa (Instância de Dados)'''
+
+    self.genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
+
+    self.respostas = None
+
+    self._datahora = datetime.today().strftime('%d-%m-%y %H:%M')
+
+
+
+  def todas_respostas_do_participante(self):
+    '''retorna todos os elementos de um participante da pesquisa'''
+
+    return self._idade, self._genero, self._respostas, self._datahora
+
+
+
+Tabela().escrevendo_linhas()
