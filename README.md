@@ -11,12 +11,6 @@ Desenvolvimento de uma pesquisa digital fictícia realizada com a população de
 O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos dados para análises sobre a Covid - 19.
 
 
-### FUNCIONAMENTO 
-
-* Usuário inicia o “bot” e na tela aparecem listadas as opções de atendimento;
-
-
-
 ### FERRAMENTAS UTILIZADAS
 <img src="https://user-images.githubusercontent.com/40433498/174687677-f42a2f52-1b0f-4f8d-ba9d-316e6d019c5f.png" width="50" height="50" /> <img src="https://user-images.githubusercontent.com/40433498/174687676-5d40a2fe-4b62-4fa1-a1fe-20737a1878f8.png" width="50" height="50" /> <img src="https://user-images.githubusercontent.com/40433498/174687678-7ea56222-a00e-4886-a63d-d4214221f8ca.jpg" width="50" height="50" />
 
