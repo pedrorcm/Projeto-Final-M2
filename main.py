@@ -5,8 +5,13 @@ from datetime import datetime
 class Tabela():
 
   def __init__(self):
+    #Escolha uma das opções abaixo (nome fixo ou escolher o nome do arquivo), e comente a outra.
+
     self.file = 'pesquisa_covid.csv'
+    #self.file = (input('Digite o nome do arquivo (sem extensão) em que deseja escrever as respostas.') + '.csv')
+
     self.lista_respostas = []
+    
 
 
   def escrevendo_linhas(self):
