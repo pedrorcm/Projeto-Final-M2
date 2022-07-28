@@ -7,8 +7,8 @@ class Tabela():
   def __init__(self):
     #Escolha uma das opções abaixo (nome fixo ou escolher o nome do arquivo), e comente a outra.
 
-    self.file = 'pesquisa_covid.csv'
-    #self.file = (input('Digite o nome do arquivo (sem extensão) em que deseja escrever as respostas.') + '.csv')
+    #self.file = 'pesquisa_covid.csv'
+    self.file = (input('Digite o nome do arquivo (sem extensão) em que deseja escrever as respostas.') + '.csv')
 
     self.lista_respostas = []
     
@@ -22,9 +22,9 @@ class Tabela():
         while len(self.lista_respostas) < 10:
           
           dd = Dados()
-          dd.setAll()
+          
 
-          self.lista_respostas.append(dd.todas_respostas_do_participante())
+          self.lista_respostas.append(dd.setAll())
 
           escrevendo = csv.writer(csvfile, delimiter=',')
           escrevendo.writerow(dd.todas_respostas_do_participante())
@@ -67,17 +67,15 @@ class Dados():
 
 
 
-  @property
-  def _genero(self):
+  def getGenero(self):
     return self.genero
 
-  @_genero.setter
-  def _genero(self, gen):
+  def setGenero(self, gen):
     '''Verifica e seta o gênero do participante'''
     while gen not in self.GENEROS:
       gen = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): \n>> ').upper()
 
-      self._genero = gen
+    self.genero = gen
 
 
 
@@ -107,7 +105,7 @@ class Dados():
   def setAll(self):
     '''Seta todos os elementos de UMA pessoa (Instância de Dados)'''
 
-    self.genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
+    self.setGenero(input('Digite o gênero do entrevistado (M - F - NB): ').upper())
 
     self.respostas = None
 
@@ -115,10 +113,12 @@ class Dados():
 
 
 
+
+
   def todas_respostas_do_participante(self):
     '''retorna todos os elementos de um participante da pesquisa'''
 
-    return self._idade, self._genero, self._respostas, self._datahora
+    return self._idade, self.genero, self._respostas, self._datahora
 
 
 
