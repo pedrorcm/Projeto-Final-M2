@@ -22,9 +22,11 @@ class Tabela():
         while len(self.lista_respostas) < 10:
           
           dd = Dados()
+          dd.setAll()
           
 
-          self.lista_respostas.append(dd.setAll())
+          self.lista_respostas.append(dd.todas_respostas_do_participante())
+          
 
           escrevendo = csv.writer(csvfile, delimiter=',')
           escrevendo.writerow(dd.todas_respostas_do_participante())
@@ -66,16 +68,17 @@ class Dados():
       self._idade = value
 
 
-
-  def getGenero(self):
-    return self.genero
-
-  def setGenero(self, gen):
+  @property
+  def genero(self):
+    return self._genero
+  
+  @genero.setter
+  def genero(self, gen):
     '''Verifica e seta o gênero do participante'''
     while gen not in self.GENEROS:
       gen = input('\nOpção inválida.\nDigite uma das opções (M - F - NB): \n>> ').upper()
 
-    self.genero = gen
+    self._genero = gen
 
 
 
@@ -105,7 +108,7 @@ class Dados():
   def setAll(self):
     '''Seta todos os elementos de UMA pessoa (Instância de Dados)'''
 
-    self.setGenero(input('Digite o gênero do entrevistado (M - F - NB): ').upper())
+    self.genero = input('Digite o gênero do entrevistado (M - F - NB): ').upper()
 
     self.respostas = None
 
@@ -113,12 +116,10 @@ class Dados():
 
 
 
-
-
   def todas_respostas_do_participante(self):
     '''retorna todos os elementos de um participante da pesquisa'''
 
-    return self._idade, self.genero, self._respostas, self._datahora
+    return self._idade, self._genero, self._respostas, self._datahora
 
 
 
