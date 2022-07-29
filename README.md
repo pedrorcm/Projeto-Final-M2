@@ -1,7 +1,6 @@
 
 # <center>Projeto de Conclusão -  Módulo 2 - Curso Data Analyst</center>
 
-<marquee>
 <img src="https://www.resilia.com.br/wp-content/uploads/2021/08/logo.png" width="1000" height="300" />
 
 ### SOBRE O PROJETO
@@ -13,7 +12,8 @@ O objetivo do projeto é desenvolver uma pesquisa em Python, a fim de obtermos d
 
 ### FERRAMENTAS UTILIZADAS
 <img src="https://user-images.githubusercontent.com/40433498/174687677-f42a2f52-1b0f-4f8d-ba9d-316e6d019c5f.png" width="50" height="50" /> <img src="https://user-images.githubusercontent.com/40433498/174687676-5d40a2fe-4b62-4fa1-a1fe-20737a1878f8.png" width="50" height="50" /> <img src="https://user-images.githubusercontent.com/40433498/174687678-7ea56222-a00e-4886-a63d-d4214221f8ca.jpg" width="50" height="50" />
-
+### FLUXOGRAMA
+<img src="https://user-images.githubusercontent.com/40433498/181656227-21b0fd46-f016-42cc-b556-455e2a284f4a.png" width="1000" height="300" />
 ### DESENVOLVEDORES DO PROJETO
 
 ### Elizangela Camargo
